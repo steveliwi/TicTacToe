@@ -5,12 +5,19 @@
 #include "Board.h"
 #include "Player.h"
 #include "UserInputPlayer.h"
+#include "RandomPlayer.h"
 
 int main() {
     Board board(3);
 
     std::unique_ptr<Player> playerX = std::make_unique<UserInputPlayer>(Board::CellValue::MarkX);
     std::unique_ptr<Player> playerO = std::make_unique<UserInputPlayer>(Board::CellValue::MarkO);
+
+    // std::random_device dev;
+    // std::mt19937::result_type seedX = dev();
+    // std::mt19937::result_type seedO = dev();
+    // std::unique_ptr<Player> playerX = std::make_unique<RandomPlayer>(Board::CellValue::MarkX, seedX);
+    // std::unique_ptr<Player> playerO = std::make_unique<RandomPlayer>(Board::CellValue::MarkO, seedO);
 
     Player* currentPlayer = playerX.get();
 
@@ -30,7 +37,7 @@ int main() {
     }
 
     // print board
-    std::cout << board.toString() << "\n";
+    std::cout << board.toString();
 
     // print outcome
     const char* outcomeString;

@@ -8,17 +8,9 @@ class Player {
         Board::CellValue mark;
         
     public:
-        Player(Board::CellValue _mark) {
-            if ((_mark != Board::CellValue::MarkX) && (_mark != Board::CellValue::MarkO))
-                throw std::invalid_argument("Player must be either X or O.");
-            mark = _mark;
-        }
-
-        Board::CellValue getMark() const {
-            return mark;
-        }
+        Player(Board::CellValue _mark);
+        Board::CellValue getMark() const;
 
     public:
         virtual CellPosition computeNextMove(const Board& board) = 0;
 };
-
